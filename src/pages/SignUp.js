@@ -2,16 +2,26 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import home from "../images/home.png";
 
-const Login = () => {
+const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    console.log("Name:", name);
     console.log("Email:", email);
     console.log("Password:", password);
 
+    // Navigate to home after successful signup
     navigate("/home");
   };
 
@@ -32,14 +42,25 @@ const Login = () => {
       boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
       overflow: "hidden",
     },
-    loginBox: {
+    imageContainer: {
+      width: "50%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#fff",
+    },
+    image: {
+      width: "90%",
+      maxWidth: "400px",
+      height: "auto",
+    },
+    signUpBox: {
       width: "50%",
       padding: "40px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      height: "500px"
     },
     input: {
       width: "90%",
@@ -58,7 +79,7 @@ const Login = () => {
       color: "white",
       border: "none",
       padding: "10px",
-      width: "50%",
+      width: "70%",
       cursor: "pointer",
       fontSize: "16px",
       borderRadius: "4px",
@@ -80,27 +101,28 @@ const Login = () => {
       fontWeight: "bold",
       marginLeft: "5px",
     },
-    imageContainer: {
-      width: "50%",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#fff",
-    },
-    image: {
-      width: "90%",
-      maxWidth: "400px",
-      height: "auto",
-    },
   };
 
   return (
     <div style={styles.body}>
       <div style={styles.container}>
-        {/* Login Form */}
-        <div style={styles.loginBox}>
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
+        {/* Image on the Left */}
+        <div style={styles.imageContainer}>
+          <img src={home} alt="Sign Up Illustration" style={styles.image} />
+        </div>
+
+        {/* Sign Up Form on the Right */}
+        <div style={styles.signUpBox}>
+          <h2>Sign Up</h2>
+          <form onSubmit={handleSignUp}>
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              style={styles.input}
+            />
             <input
               type="email"
               placeholder="Email"
@@ -117,6 +139,14 @@ const Login = () => {
               required
               style={styles.input}
             />
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              style={styles.input}
+            />
             {/* Centered Button */}
             <div style={styles.buttonContainer}>
               <button
@@ -125,29 +155,20 @@ const Login = () => {
                 onMouseOver={(e) => (e.target.style.backgroundColor = styles.buttonHover.backgroundColor)}
                 onMouseOut={(e) => (e.target.style.backgroundColor = styles.button.backgroundColor)}
               >
-                Login
+                Sign Up
               </button>
             </div>
           </form>
 
-          {/* Forgot Password & Sign In */}
-          <p style={styles.textLink}>
-            Forgot your password?
-            <a href="/forgot-password" style={styles.link}> Reset</a>
-          </p>
+          {/* Sign In Link */}
           <p style={styles.textLink}>
             Already have an account?
-            <a href="/sign-up" style={styles.link}> Sign up</a>
+            <a href="/" style={styles.link}> Sign in</a>
           </p>
-        </div>
-
-        {/* Image Section */}
-        <div style={styles.imageContainer}>
-          <img src={home} alt="Login Illustration" style={styles.image} />
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;

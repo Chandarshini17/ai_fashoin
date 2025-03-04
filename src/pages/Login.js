@@ -133,11 +133,11 @@ const Login = () => {
           {/* Forgot Password & Sign In */}
           <p style={styles.textLink}>
             Forgot your password?
-            <a href="/forgot-password" style={styles.link}> Reset</a>
+            <a href="/forgotpassword" style={styles.link}> Reset</a>
           </p>
           <p style={styles.textLink}>
             Already have an account?
-            <a href="/sign-up" style={styles.link}> Sign up</a>
+            <a href="/signup" style={styles.link}> Sign up</a>
           </p>
         </div>
 

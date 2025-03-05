@@ -36,7 +36,7 @@ const Hero = () => {
             <Link to="/home" style={{ textDecoration: "none", color: "#000", fontSize: "18px" }}>Home</Link>
             <Link to="/products" style={{ textDecoration: "none", color: "#000", fontSize: "18px" }}>Products</Link>
             <Link to="/contact" style={{ textDecoration: "none", color: "#000", fontSize: "18px" }}>Contact Us</Link>
-            <Link to="/" style={{ textDecoration: "none", color: "#000", fontSize: "18px" }}>Login</Link>
+            <Link to="/" style={{ textDecoration: "none", color: "#000", fontSize: "18px" }}>Logout</Link>
           </div>
         </div>
 
